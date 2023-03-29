@@ -1,5 +1,13 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seen = new Set();
+  for (let num of array) {
+    const complement = target - num;
+    if (seen.has(complement)) {
+      return true;
+    }
+    seen.add(num);
+  }
+  return false;
 }
 
 /* 
@@ -7,14 +15,19 @@ function hasTargetSum(array, target) {
 */
 
 /* 
-  Add your pseudocode here
+  
 */
 
 /*
-  Add written explanation of your solution here
+  take the array of numbers
+  add the first number to each subsequent number, checking the result to see if it matches the target
+  if found return true
+  if not add second number to each subsequent number and repeat steps until the entire array hass been checked
+  if at the end none are found, return false
 */
 
 // You can run `node index.js` to view these console logs
+
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
